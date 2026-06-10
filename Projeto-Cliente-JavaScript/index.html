@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotelaria - Cliente JavaScript</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Sistema de Hotelaria - Cliente JavaScript</h1>
+        <div id="status-servidor" class="status-offline">Verificando conexão com o servidor...</div>
+    </header>
+
+    <main class="container">
+        <!-- SEÇÃO HÓSPEDES/CLIENTES -->
+        <section class="card">
+            <h2>Gerenciar Clientes</h2>
+            <form id="form-cliente">
+                <div class="form-group">
+                    <label for="cliente-nome">Nome Completo</label>
+                    <input type="text" id="cliente-nome" placeholder="Digite o nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="cliente-cpf">CPF</label>
+                    <input type="text" id="cliente-cpf" placeholder="123.456.789-00" required>
+                </div>
+                <div class="form-group">
+                    <label for="cliente-telefone">Telefone</label>
+                    <input type="text" id="cliente-telefone" placeholder="(88) 99999-9999" required>
+                </div>
+                <button type="submit" class="btn-primary">Adicionar Cliente</button>
+            </form>
+            <hr>
+            <h3>Clientes Cadastrados</h3>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>CPF</th>
+                            <th>Telefone</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lista-clientes">
+                        <tr><td colspan="4">Carregando...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SEÇÃO HOSPEDAGENS -->
+        <section class="card">
+            <h2>Hospedagens Disponíveis</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Tipo</th>
+                            <th>Cidade/UF</th>
+                            <th>Diária Base</th>
+                            <th>Disponível</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lista-hospedagens">
+                        <tr><td colspan="6">Carregando...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <button id="btn-atualizar-hospedagens" class="btn-secondary">Atualizar Hospedagens</button>
+        </section>
+
+        <!-- SEÇÃO RESERVAS -->
+        <section class="card col-span-2">
+            <h2>Solicitar Reserva (Comunicação Assíncrona / RabbitMQ)</h2>
+            <form id="form-reserva">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="reserva-cliente-id">ID do Cliente</label>
+                        <input type="number" id="reserva-cliente-id" placeholder="Ex: 1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reserva-hospedagem-id">ID da Hospedagem</label>
+                        <input type="number" id="reserva-hospedagem-id" placeholder="Ex: 2" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reserva-entrada">Data de Entrada</label>
+                        <input type="date" id="reserva-entrada" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reserva-saida">Data de Saída</label>
+                        <input type="date" id="reserva-saida" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary">Solicitar Reserva</button>
+            </form>
+
+            <hr>
+
+            <div class="reservas-header">
+                <h3>Reservas Solicitadas</h3>
+                <button id="btn-atualizar-reservas" class="btn-secondary">Atualizar Lista de Reservas</button>
+            </div>
+            
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Hóspede</th>
+                            <th>Hospedagem</th>
+                            <th>Check-In</th>
+                            <th>Check-Out</th>
+                            <th>Valor Total</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lista-reservas">
+                        <tr><td colspan="8">Carregando...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="nota"><strong>Nota:</strong> As reservas criadas entram com status <code>CRIADA</code>. O processamento final é assíncrono. Clique em "Atualizar Lista de Reservas" para ver o status evoluir para <code>PROCESSADA</code> após ser consumido pelo RabbitMQ.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Sistemas Distribuídos - Evolução dos Trabalhos 3 & 4</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

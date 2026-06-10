@@ -1,0 +1,16 @@
+{
+  "name": "projeto-cliente-javascript",
+  "version": "1.0.0",
+  "description": "Cliente JavaScript Web para o Sistema de Hotelaria Distribuído",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "distributed-systems",
+    "rabbitmq",
+    "rest-api"
+  ],
+  "author": "Lohan",
+  "license": "ISC"
+}
