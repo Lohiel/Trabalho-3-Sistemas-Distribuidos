@@ -3,7 +3,7 @@ package com.hotelaria.model;
 public class Hospedagem {
     private Long id;
     private String nome;
-    private String tipo; // "HOTEL", "MOTEL", "POUSADA"
+    private String tipo; 
     private String cidade;
     private String estado;
     private Double diariaBase;

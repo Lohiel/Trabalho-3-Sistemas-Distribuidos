@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Cliente Python — Sistema de Hotelaria Distribuído
-Disciplina: Sistemas Distribuídos — Trabalhos 3 e 4
+Disciplina: Sistemas Distribuídos
 """
 
 import requests
@@ -22,7 +22,6 @@ def verificar_conexao():
 def cabecalho():
     print("\n" + "=" * 58)
     print("     SISTEMA DE HOTELARIA — CLIENTE PYTHON")
-    print("     Sistemas Distribuídos — REST + RabbitMQ")
     print("=" * 58)
 
 
@@ -31,10 +30,10 @@ def menu():
     print("  [1]  Listar Hospedagens")
     print("  [2]  Listar Clientes")
     print("  [3]  Cadastrar Novo Cliente")
-    print("  [4]  Solicitar Reserva  (→ RabbitMQ)")
+    print("  [4]  Solicitar Reserva")
     print("  [5]  Listar Reservas")
-    print("  [6]  Cancelar Reserva   (→ RabbitMQ)")
-    print("  [7]  Efetivar Reserva   (→ RabbitMQ)")
+    print("  [6]  Cancelar Reserva")
+    print("  [7]  Efetivar Reserva")
     print("  [8]  Verificar Conexão com o Servidor")
     print("  [9]  Sair")
     print("=" * 58)
